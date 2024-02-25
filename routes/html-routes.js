@@ -7,7 +7,8 @@ router.get('/', async (req, res) => {
   const [[{cartCount}]] = await db.query('SELECT SUM(quantity) AS cartCount FROM cart;')
 
   // TODO: Convert the response below to render a handlebars template
-  res.sendFile(path.join(__dirname, '../views/index.html'))
+  //previous: res.sendFile(path.join(__dirname, '../views/index.html'))
+  res.render('index', {rows, cartCount})
 })
 
 router.get('/product/:id', async (req, res) => {
@@ -18,7 +19,8 @@ router.get('/product/:id', async (req, res) => {
   const [[{cartCount}]] = await db.query('SELECT SUM(quantity) AS cartCount FROM cart;')
 
   // TODO: Convert the response below to render a handlebars template
-  res.sendFile(path.join(__dirname, '../views/product.html'))
+  //previous: res.sendFile(path.join(__dirname, '../views/product.html'))
+  res.render('product', {product, cartCount})
 })
 
 router.get('/cart', async (req, res) => {
@@ -41,7 +43,12 @@ router.get('/cart', async (req, res) => {
     .toFixed(2)
 
   // TODO: Convert the response below to render a handlebars template
-  res.sendFile(path.join(__dirname, '../views/cart.html'))
+  //previous: res.sendFile(path.join(__dirname, '../views/cart.html'))
+  res.render('cart', {cartItems, total})
 })
 
 module.exports = router
+
+//Instructions: After that, you'll need to replace the `sendFile` responses in `routes/html-routes.js` with handlebars `render` calls. 
+//The necessary database calls for the template data are already written in each route. 
+//You'll need to convert the static `.html` files in the `/views` folder into `.handlebars` files.

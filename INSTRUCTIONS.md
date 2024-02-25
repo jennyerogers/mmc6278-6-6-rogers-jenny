@@ -55,7 +55,7 @@ To run the application locally, run:
 npm run dev
 ```
 
-You can then navigate to [http://localhost:3000](http://localhost:3000) to view the application.
+You can then navigate to [http://localhosnpt:3000](http://localhost:3000) to view the application.
 
 &nbsp;
 ## Testing
